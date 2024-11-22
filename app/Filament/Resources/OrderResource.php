@@ -19,7 +19,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\ToggleButtons;
 use App\Filament\Resources\OrderResource\Pages;
-
+use App\Filament\Resources\OrderResource\RelationManagers\AddressRelationManager;
 use Filament\Forms\Components\Hidden;
 use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -30,6 +30,9 @@ class OrderResource extends Resource
     protected static ?string $model = Order::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-shopping-bag';
+
+    protected static ?int $navigationSort = 5;
+
 
     public static function form(Form $form): Form
     {
@@ -257,7 +260,7 @@ class OrderResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            AddressRelationManager::class
         ];
     }
 
