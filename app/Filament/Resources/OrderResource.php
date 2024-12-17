@@ -25,6 +25,9 @@ use Filament\Tables\Columns\SelectColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\Number;
 
+// use Illuminate\Database\Eloquent\Builder;
+// use Illuminate\Support\Facades\DB;
+
 class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
@@ -33,6 +36,28 @@ class OrderResource extends Resource
 
     protected static ?int $navigationSort = 5;
 
+    // protected function getTableQuery(): Builder
+    // {
+    //     // Menambahkan agregasi untuk menghitung total pendapatan per bulan
+    //     return parent::getTableQuery()
+    //         ->select(
+    //             DB::raw('YEAR(created_at) as year'),
+    //             DB::raw('MONTH(created_at) as month'),
+    //             DB::raw('SUM(grand_total) as total_revenue')
+    //         )
+    //         ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+    //         ->orderBy(DB::raw('YEAR(created_at)'), 'desc')
+    //         ->orderBy(DB::raw('MONTH(created_at)'), 'desc');
+    // }
+
+    // protected function getTableColumns(): array
+    // {
+    //     return [
+    //         TextColumn::make('year')->label('Tahun'),
+    //         TextColumn::make('month')->label('Bulan')->formatStateUsing(fn ($state) => \Carbon\Carbon::createFromFormat('m', $state)->format('F')),
+    //         TextColumn::make('total_revenue')->label('Total Pendapatan')->money('idr'),
+    //     ];
+    // }
 
     public static function form(Form $form): Form
     {
